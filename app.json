@@ -5,6 +5,7 @@
       "expo-router"
     ],
     "name": "intern-assign",
-    "slug": "intern-assign"
+    "slug": "intern-assign",
+    "newArchEnabled": true
   }
 }
