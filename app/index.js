@@ -3,6 +3,8 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import React from "react";
 import { useRouter } from "expo-router";
 
+//home
+
 const Index = () => {
           const router = useRouter();
           return (
