@@ -10,7 +10,7 @@ import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import { useRouter } from 'expo-router';
 import { SwipeButton } from 'react-native-expo-swipe-button';
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
-import Recommendations from '../../components/Recommendations'; // Import the Recommendations component
+import Recommendations from '../../components/Recommendations'; 
 
 const Home = () => {
   let amount = 1278653;
