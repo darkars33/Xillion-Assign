@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, FlatList } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import { Stack } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -7,6 +7,7 @@ import AntDesign from '@expo/vector-icons/AntDesign';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import Feather from '@expo/vector-icons/Feather';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
+import stockData from './stockData';
 
 const Home = () => {
           let amount = 1278653;
@@ -45,10 +46,84 @@ const Home = () => {
                                                   <Text style={styles.buttonText}>Ask AI</Text>
                                         </TouchableOpacity>
                               </View>
-                              <LinearGradient 
+                              <LinearGradient
                                         colors={['#201830', '#201830']}
+                                        style={{ height: '100%' }}
                               >
-                                        <Text style={{color:'white'}}>hello</Text>
+                                        <View style={{ marginTop: 50 }}>
+                                                  <Text style={{ textAlign: 'center', color: 'white', padding: 10, fontSize: 20, fontWeight: 'bold' }} >Today's Recommendations</Text>
+                                        </View>
+                                        <View style={{ width: '100%', padding: 15, marginTop: 10, backgroundColor: '#595165', borderRadius: 20, flexDirection: 'column', gap: 20 }}>
+                                                  <View style={{ height: 250 }}>
+                                                            <FlatList
+                                                                      data={stockData}
+                                                                      keyExtractor={(item) => item.id.toString()}
+                                                                      renderItem={({ item }) => (
+                                                                                <LinearGradient
+                                                                                          colors={['#663e9d', '#82419c']} // Gradient colors
+                                                                                          start={{ x: 1, y: 0 }} // Start from right
+                                                                                          end={{ x: 0, y: 0 }} // End at left
+                                                                                          style={{
+                                                                                                    padding: 10,
+                                                                                                    borderRadius: 10,
+                                                                                                    width: '100%',
+                                                                                                    marginBottom: 10,
+                                                                                                    
+                                                                                          }}
+                                                                                >
+                                                                                          {/* Header Row */}
+                                                                                          <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+                                                                                                    <Text style={{ color: 'white', fontSize: 15, fontWeight: 'bold' }}>
+                                                                                                              {item.name}
+                                                                                                    </Text>
+                                                                                                    <Text style={{ color: '#498f55' }}>{item.change}</Text>
+                                                                                          </View>
+
+                                                                                          {/* Content Row */}
+                                                                                          <View
+                                                                                                    style={{
+                                                                                                              flex:1,
+                                                                                                              flexDirection: 'row',
+                                                                                                              width: '100%', // Ensure full width
+                                                                                                              marginTop: 10, // Add space between rows
+                                                                                                              justifyContent:'space-around' // Distribute space evenly
+                                                                                                              
+                                                                                                    }}
+                                                                                          >
+                                                                                                    {/* Buy Section */}
+                                                                                                    <View style={{ flexDirection:'column', flex:1, alignItems:'center', justifyContent:'center' }}>
+                                                                                                              <Text style={{ fontSize: 14, color: '#ddd' }}>Buy</Text>
+                                                                                                              <Text style={{ fontSize: 16, fontWeight: 'bold', color: '#fff' }}>
+                                                                                                                        {item.buyRange}
+                                                                                                              </Text>
+                                                                                                    </View>
+
+                                                                                                    {/* Stop Loss Section */}
+                                                                                                    <View style={{flexDirection:'column', flex:1, justifyContent:'center',alignItems:'center', }}>
+                                                                                                              <Text style={{ fontSize: 14, color: '#ddd' }}>Stop Loss</Text>
+                                                                                                              <Text style={{ fontSize: 16, fontWeight: 'bold', color: '#fff' }}>
+                                                                                                                        {item.stopLoss}
+                                                                                                              </Text>
+                                                                                                    </View>
+
+                                                                                                    {/* Target Section */}
+                                                                                                    <View style={{ flexDirection:'column', flex:1 , justifyContent:'center',alignItems:'center',}}>
+                                                                                                              <Text style={{ fontSize: 14, color: '#ddd' }}>Target</Text>
+                                                                                                              <Text style={{ fontSize: 16, fontWeight: 'bold', color: '#fff' }}>
+                                                                                                                        {item.target}
+                                                                                                              </Text>
+                                                                                                    </View>
+                                                                                          </View>
+                                                                                </LinearGradient>
+
+                                                                      )}
+                                                                      showsVerticalScrollIndicator={false}
+                                                            />
+                                                  </View>
+                                                  <View>
+                                                            <Text>On</Text>
+                                                  </View>
+                                        </View>
                               </LinearGradient>
 
                     </>
@@ -100,7 +175,7 @@ const styles = StyleSheet.create({
                     alignItems: 'center',
                     width: '100%',
                     gap: 10,
-                    zIndex:10
+                    zIndex: 10
           },
           button: {
                     marginHorizontal: 10,
@@ -112,7 +187,7 @@ const styles = StyleSheet.create({
                     alignItems: 'center',
                     gap: 10,
                     borderRadius: 15,
-                    width:'40%'
+                    width: '40%'
           },
           buttonText: {
                     fontSize: 18,
