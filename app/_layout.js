@@ -2,21 +2,20 @@ import { useEffect } from 'react';
 import { Stack } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { useFonts } from 'expo-font';
-import {View, Text} from 'react-native';
 
 SplashScreen.preventAutoHideAsync();
 
 const RootLayout = () =>{
           const [fontsLoaded] = useFonts({
-                    "Poppins-Black": require("../assests/fonts/Poppins-Black.ttf"),
-                    "Poppins-Bold": require("../assests/fonts/Poppins-Bold.ttf"),
-                    "Poppins-ExtraBold": require("../assests/fonts/Poppins-ExtraBold.ttf"),
-                    "Poppins-ExtraLight": require("../assests/fonts/Poppins-ExtraLight.ttf"),
-                    "Poppins-Light": require("../assests/fonts/Poppins-Light.ttf"),
-                    "Poppins-Medium": require("../assests/fonts/Poppins-Medium.ttf"),
-                    "Poppins-Regular": require("../assests/fonts/Poppins-Regular.ttf"),
-                    "Poppins-SemiBold": require("../assests/fonts/Poppins-SemiBold.ttf"),
-                    "Poppins-Thin": require("../assests/fonts/Poppins-Thin.ttf"),
+                    "Poppins-Black": require("../assets/fonts/Poppins-Black.ttf"),
+                    "Poppins-Bold": require("../assets/fonts/Poppins-Bold.ttf"),
+                    "Poppins-ExtraBold": require("../assets/fonts/Poppins-ExtraBold.ttf"),
+                    "Poppins-ExtraLight": require("../assets/fonts/Poppins-ExtraLight.ttf"),
+                    "Poppins-Light": require("../assets/fonts/Poppins-Light.ttf"),
+                    "Poppins-Medium": require("../assets/fonts/Poppins-Medium.ttf"),
+                    "Poppins-Regular": require("../assets/fonts/Poppins-Regular.ttf"),
+                    "Poppins-SemiBold": require("../assets/fonts/Poppins-SemiBold.ttf"),
+                    "Poppins-Thin": require("../assets/fonts/Poppins-Thin.ttf"),
                   });
 
                   useEffect(() => {
