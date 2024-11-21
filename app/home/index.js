@@ -136,31 +136,26 @@ const Home = () => {
                                                                                 style={{
                                                                                           backgroundColor: 'white', // Set the background color of the icon
                                                                                           borderRadius: '100%', // Make it circular or adjust size
-                                                                                          padding: 13, 
+                                                                                          padding: 10, 
                                                                                 }}
                                                                       >
                                                                                 <MaterialCommunityIcons
                                                                                           name="lightning-bolt-outline"
-                                                                                          size={44}
+                                                                                          size={54}
                                                                                           color="black" // Set the icon color to black
                                                                                 />
                                                                       </View>
                                                             }
                                                             onComplete={() => router.push('/history')}
                                                             title="EXECUTE"
-                                                            titleStyles={{
-                                                                      color: 'white',  // Set the title color to white
-                                                                      fontSize: 18,    // Set the font size
-                                                                      fontWeight: 'bold', // Make the font bold
-                                                                      textAlign: 'center', // Center the title
-                                                                      fontFamily: 'Poppins-Bold', // Use a custom font if needed
-                                                                    }}
+                                                            titleStyle={{ color: 'black', fontSize:20, fontWeight:'bold'}}
                                                             borderRadius={180}
                                                             containerStyle={{ backgroundColor: '#8c8c8c' }}
                                                             underlayTitle="Release to complete"
                                                             underlayTitleStyle={{ color: 'white' }}
-                                                            
                                                             railFillBackgroundColor="white"
+                                                            style={{width:'50%'}}
+                                                      
                                                   />
 
                                         </View>
@@ -188,7 +183,7 @@ const styles = StyleSheet.create({
                     fontStyle: 'Poppins-Bold'
           },
           innerContainer: {
-                    marginTop: 10,
+                    marginTop: 5,
                     flexDirection: 'column',
                     justifyContent: 'center',
                     alignItems: 'center',
