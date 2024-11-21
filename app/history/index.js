@@ -1,5 +1,5 @@
 import {View, Text} from 'react-native';
-
+//history
 const History = () =>{
           return(
                     <View>
