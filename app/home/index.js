@@ -1,16 +1,21 @@
-import { View, Text, StyleSheet, TouchableOpacity, FlatList } from 'react-native';
+import React from 'react';
+import { View, Text, StyleSheet, TouchableOpacity, FlatList} from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import { Stack } from 'expo-router';
-import { SafeAreaView } from 'react-native-safe-area-context';
 import { LinearGradient } from 'expo-linear-gradient';
 import AntDesign from '@expo/vector-icons/AntDesign';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import Feather from '@expo/vector-icons/Feather';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import stockData from './stockData';
+import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
+import { useRouter } from 'expo-router';
+import { SwipeButton } from 'react-native-expo-swipe-button';
 
 const Home = () => {
           let amount = 1278653;
+          const router = useRouter();
+          
           return (
                     <>
                               <StatusBar translucent backgroundColor="transparent" style="light" />
@@ -68,64 +73,98 @@ const Home = () => {
                                                                                                     borderRadius: 10,
                                                                                                     width: '100%',
                                                                                                     marginBottom: 10,
-                                                                                                    
+
                                                                                           }}
                                                                                 >
                                                                                           {/* Header Row */}
                                                                                           <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-                                                                                                    <Text style={{ color: 'white', fontSize: 15, fontWeight: 'bold' }}>
+                                                                                                    <Text style={{ color: 'white', fontSize: 18, fontWeight: 'bold' }}>
                                                                                                               {item.name}
                                                                                                     </Text>
-                                                                                                    <Text style={{ color: '#498f55' }}>{item.change}</Text>
+                                                                                                    <Text style={{ color: '#498f55', fontSize: 15 }}>{item.change}</Text>
                                                                                           </View>
 
                                                                                           {/* Content Row */}
                                                                                           <View
                                                                                                     style={{
-                                                                                                              flex:1,
                                                                                                               flexDirection: 'row',
-                                                                                                              width: '100%', // Ensure full width
+                                                                                                              width: '100%',
                                                                                                               marginTop: 10, // Add space between rows
-                                                                                                              justifyContent:'space-around' // Distribute space evenly
-                                                                                                              
+                                                                                                              justifyContent: 'space-between', // Space between elements
+                                                                                                              alignItems: 'center', // Align vertically centered
                                                                                                     }}
                                                                                           >
-                                                                                                    {/* Buy Section */}
-                                                                                                    <View style={{ flexDirection:'column', flex:1, alignItems:'center', justifyContent:'center' }}>
-                                                                                                              <Text style={{ fontSize: 14, color: '#ddd' }}>Buy</Text>
-                                                                                                              <Text style={{ fontSize: 16, fontWeight: 'bold', color: '#fff' }}>
+                                                                                                    {/* Buy Section (Start) */}
+                                                                                                    <View style={{ alignItems: 'center' }}>
+                                                                                                              <Text style={{ fontSize: 13, color: '#ddd' }}>Buy</Text>
+                                                                                                              <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#fff' }}>
                                                                                                                         {item.buyRange}
                                                                                                               </Text>
                                                                                                     </View>
 
-                                                                                                    {/* Stop Loss Section */}
-                                                                                                    <View style={{flexDirection:'column', flex:1, justifyContent:'center',alignItems:'center', }}>
-                                                                                                              <Text style={{ fontSize: 14, color: '#ddd' }}>Stop Loss</Text>
-                                                                                                              <Text style={{ fontSize: 16, fontWeight: 'bold', color: '#fff' }}>
+                                                                                                    {/* Stop Loss Section (Center) */}
+                                                                                                    <View style={{ alignItems: 'center' }}>
+                                                                                                              <Text style={{ fontSize: 13, color: '#ddd' }}>Stop Loss</Text>
+                                                                                                              <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#fff' }}>
                                                                                                                         {item.stopLoss}
                                                                                                               </Text>
                                                                                                     </View>
 
-                                                                                                    {/* Target Section */}
-                                                                                                    <View style={{ flexDirection:'column', flex:1 , justifyContent:'center',alignItems:'center',}}>
-                                                                                                              <Text style={{ fontSize: 14, color: '#ddd' }}>Target</Text>
-                                                                                                              <Text style={{ fontSize: 16, fontWeight: 'bold', color: '#fff' }}>
+                                                                                                    {/* Target Section (End) */}
+                                                                                                    <View style={{ alignItems: 'center' }}>
+                                                                                                              <Text style={{ fontSize: 13, color: '#ddd' }}>Target</Text>
+                                                                                                              <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#fff' }}>
                                                                                                                         {item.target}
                                                                                                               </Text>
                                                                                                     </View>
                                                                                           </View>
+
                                                                                 </LinearGradient>
 
                                                                       )}
                                                                       showsVerticalScrollIndicator={false}
                                                             />
                                                   </View>
-                                                  <View>
-                                                            <Text>On</Text>
+                                                  <View style={{ paddingHorizontal: 15 }}>
+                                                            <Text style={{ color: 'white', textAlign: 'left' }}>On executing this basket, buy orders along with stop loss and targets will be placed</Text>
                                                   </View>
                                         </View>
-                              </LinearGradient>
+                                        <View>
+                                                  <SwipeButton
+                                                            Icon={
+                                                                      <View
+                                                                                style={{
+                                                                                          backgroundColor: 'white', // Set the background color of the icon
+                                                                                          borderRadius: '100%', // Make it circular or adjust size
+                                                                                          padding: 13, 
+                                                                                }}
+                                                                      >
+                                                                                <MaterialCommunityIcons
+                                                                                          name="lightning-bolt-outline"
+                                                                                          size={44}
+                                                                                          color="black" // Set the icon color to black
+                                                                                />
+                                                                      </View>
+                                                            }
+                                                            onComplete={() => router.push('/history')}
+                                                            title="EXECUTE"
+                                                            titleStyles={{
+                                                                      color: 'white',  // Set the title color to white
+                                                                      fontSize: 18,    // Set the font size
+                                                                      fontWeight: 'bold', // Make the font bold
+                                                                      textAlign: 'center', // Center the title
+                                                                      fontFamily: 'Poppins-Bold', // Use a custom font if needed
+                                                                    }}
+                                                            borderRadius={180}
+                                                            containerStyle={{ backgroundColor: '#8c8c8c' }}
+                                                            underlayTitle="Release to complete"
+                                                            underlayTitleStyle={{ color: 'white' }}
+                                                            
+                                                            railFillBackgroundColor="white"
+                                                  />
 
+                                        </View>
+                              </LinearGradient>
                     </>
           );
 };
