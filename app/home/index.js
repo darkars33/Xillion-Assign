@@ -25,9 +25,9 @@ const Home = () => {
                                         style={styles.gradient}
                               >
                                         <View style={styles.row} >
-                                                  <AntDesign name="user" size={24} color="white" />
+                                                  <TouchableOpacity onPress={() => alert('Profile')}><AntDesign name="user" size={24} color="white" /></TouchableOpacity>
                                                   <Text style={styles.text}>XILLION</Text>
-                                                  <Ionicons name="notifications-outline" size={24} color="white" />
+                                                  <TouchableOpacity onPress={() => alert('Notification')}><Ionicons name="notifications" size={24} color="white" /></TouchableOpacity>
                                         </View>
                                         <View style={{ display: "flex", flexDirection: 'column', justifyContent: "center", alignItems: "center", marginTop: 10, marginBottom: 20 }}>
                                                   <View style={styles.innerContainer}>
@@ -55,7 +55,7 @@ const Home = () => {
                                         colors={['#201830', '#201830']}
                                         style={{ height: '100%' }}
                               >
-                                        <View style={{ marginTop: 50 }}>
+                                        <View style={{ marginTop: 40 }}>
                                                   <Text style={{ textAlign: 'center', color: 'white', padding: 10, fontSize: 20, fontWeight: 'bold' }} >Today's Recommendations</Text>
                                         </View>
                                         <View style={{ width: '100%', padding: 15, marginTop: 10, backgroundColor: '#595165', borderRadius: 20, flexDirection: 'column', gap: 20 }}>
@@ -201,7 +201,7 @@ const styles = StyleSheet.create({
                     marginTop: 10
           },
           container: {
-                    marginTop: '68%',
+                    marginTop: '65%',
                     position: 'absolute',
                     padding: 10,
                     flexDirection: 'row',
@@ -228,6 +228,7 @@ const styles = StyleSheet.create({
                     fontWeight: 'bold',
                     textAlign: 'center',
                     color: 'white',
+                    fontFamily:'Poppins-Bold'
           },
 });
 
